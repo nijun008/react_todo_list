@@ -1,0 +1,17 @@
+@import '../styles/variables.scss';
+
+.app-container {
+  height: calc(100% - #{$header-height});
+  position: relative;
+}
+
+.app-main {
+  // width: calc(100% - #{$sidebar-width});
+  margin-left: $sidebar-width;
+  flex-grow: 1;
+  transition: margin-left .3s;
+
+  &.full-main {
+    margin-left: 0;
+  }
+}

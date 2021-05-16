@@ -1,0 +1,16 @@
+@import '../../styles/variables.scss';
+
+.app-header {
+  height: $header-height;
+  color: #fff;
+  padding: 0 20px;
+  background-color: $primary-color;
+  .header-row {
+    height: 100%;
+    .header-right {
+      & > div {
+        margin-left: 12px;
+      }
+    }
+  }
+}

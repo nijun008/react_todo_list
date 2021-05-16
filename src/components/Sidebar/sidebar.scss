@@ -1,0 +1,40 @@
+@import '../../styles/variables.scss';
+
+.app-sidebar {
+  width: $sidebar-width;
+  background-color: $bg-color;
+  position: absolute;
+  height: 100%;
+  left: 0;
+  padding-top: 30px;
+  padding-left: 30px;
+  padding-right: 10px;
+  transition: left .3s;
+  &.sidebar-hidden {
+    left: -#{$sidebar-width};
+  }
+  .nav-item {
+    margin-bottom: 8px;
+    .today-icon {
+      display: inline-block;
+      width: 14px;
+      font-weight: 600;
+    }
+    .nav-icon {
+      margin-right: 12px;
+    }
+    a {
+      padding: 4px 0 4px 10px;
+      display: block;
+      color: #333;
+      transition: all .3s;
+      &:hover {
+        background-color: $light-color;
+      }
+      &.active {
+        background-color: $primary-color;
+        color: #fff;
+      }
+    }
+  }
+}
