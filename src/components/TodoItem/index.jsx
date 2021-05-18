@@ -1,9 +1,11 @@
 import React from 'react'
 import { Row, Dropdown, Menu } from 'antd'
-import { CheckOutlined } from '@ant-design/icons'
+import { CheckCircleTwoTone } from '@ant-design/icons'
 
 
 import './todoitem.scss'
+
+const prioLvColor = ['#888', '#d1453b', '#eb8909', '#246fe0', '#888']
 
 const DropDownMenu =  (props) => {
   return (
@@ -27,9 +29,13 @@ const TodoItem = (props) => {
       <Row className="todo-main">
         <div className="todo-checkbox">
           <div 
-            className={`icon icon-${prioLv}`}
+            className={`icon-box icon-${prioLv}`}
             onClick={() => todoHandler('completed')}>
-            { isCompleted ? <CheckOutlined /> : '' }
+            { 
+              isCompleted
+              ? <CheckCircleTwoTone twoToneColor={ prioLvColor[prioLv] } />
+              : <div className={`icon icon-${prioLv}`}></div> 
+            }
           </div>
         </div>
         <div className="todo-content">{ content }</div>

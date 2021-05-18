@@ -11,6 +11,7 @@
 
     .todo-content {
       line-height: 26px;
+      word-break: break-all;
     }
 
     .todo-checkbox {
@@ -18,37 +19,32 @@
       display: flex;
       align-items: center;
       min-width: 30px;
-      .icon {
-        width: 18px;
-        height: 18px;
-        border-radius: 50%;
-        border: 1px solid #888;
-        cursor: pointer;
-        text-align: center;
-        font-size: 14px;
-        position: relative;
-        &:hover {
-          background-color: #efefef;
+      .icon-box {
+        font-size: 18px;
+        .icon {
+          width: 18px;
+          height: 18px;
+          border-radius: 50%;
+          border: 1px solid #888;
+          cursor: pointer;
+          text-align: center;
+          &:hover {
+            background-color: #efefef;
+          }
         }
-
-        & > span {
-          position: absolute;
-          top: 2px;
-          left: 1px;
-        }
-        &.icon-1 {
+        .icon-1 {
           border-color: #d1453b;
           color: #d1453b;;
         }
-        &.icon-2 {
+        .icon-2 {
           border-color: #eb8909;
           color: #eb8909;;
         }
-        &.icon-3 {
+        .icon-3 {
           border-color: #246fe0;
           color: #246fe0;
         }
-        &.icon-4 {
+        .icon-4 {
           border-color: #888;
           color: #888;
         }
@@ -57,8 +53,8 @@
   }
 
   .todo-menu {
+    margin-left: 20px;
     cursor: pointer;
-    padding-left: 6px;
     min-width: 20px;
     font-weight: 600;
   }
