@@ -1,5 +1,6 @@
 import React from 'react'
 import { Row, Dropdown, Menu } from 'antd'
+import { CheckOutlined } from '@ant-design/icons'
 
 
 import './todoitem.scss'
@@ -22,10 +23,14 @@ const TodoItem = (props) => {
   }
 
   return(
-    <Row className="todo-list-item" justify="space-between">
+    <Row className={`todo-list-item ${isCompleted ? 'todo-completed' : null }`} justify="space-between">
       <Row className="todo-main">
         <div className="todo-checkbox">
-          <div className={`icon icon-${prioLv} ${isCompleted ? 'todo-completed' : null }`}></div>
+          <div 
+            className={`icon icon-${prioLv}`}
+            onClick={() => todoHandler('completed')}>
+            { isCompleted ? <CheckOutlined /> : '' }
+          </div>
         </div>
         <div className="todo-content">{ content }</div>
       </Row>

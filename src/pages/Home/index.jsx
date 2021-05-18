@@ -13,7 +13,7 @@ class Home extends Component {
 
     switch (handleType) {
       case 'completed':
-        console.log('completed')
+        if (targetTodo.isCompleted) return
         this.props.setCompleted(targetTodo)
         break
       case 'edit':
@@ -31,7 +31,13 @@ class Home extends Component {
     const { todoList = [] } = this.props
     
     const list = [...todoList]
-    list.sort((a, b) => a.prioLv - b.prioLv)
+    list.sort((a, b) => {
+      if (a.isCompleted === b.isCompleted) {
+        return a.prioLv - b.prioLv
+      } else {
+        return a.isCompleted - b.isCompleted
+      }
+    })
 
     return (
       <div className="home-page-wrapper">

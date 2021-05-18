@@ -19,23 +19,38 @@
       align-items: center;
       min-width: 30px;
       .icon {
-        width: 16px;
-        height: 16px;
+        width: 18px;
+        height: 18px;
         border-radius: 50%;
         border: 1px solid #888;
         cursor: pointer;
+        text-align: center;
+        font-size: 14px;
+        position: relative;
         &:hover {
-          background-color: #eee;
+          background-color: #efefef;
         }
 
+        & > span {
+          position: absolute;
+          top: 2px;
+          left: 1px;
+        }
         &.icon-1 {
           border-color: #d1453b;
+          color: #d1453b;;
         }
         &.icon-2 {
           border-color: #eb8909;
+          color: #eb8909;;
         }
         &.icon-3 {
           border-color: #246fe0;
+          color: #246fe0;
+        }
+        &.icon-4 {
+          border-color: #888;
+          color: #888;
         }
       }
     }
@@ -46,5 +61,11 @@
     padding-left: 6px;
     min-width: 20px;
     font-weight: 600;
+  }
+}
+
+.todo-completed {
+  .todo-content {
+    text-decoration: line-through;
   }
 }
