@@ -1,10 +1,10 @@
-import { ADD_TODO, REMOVE_TODO, DONE_TODO, EDIT_TODO } from '../constant'
+import { ADD_TODO, REMOVE_TODO, SET_COMPLETED, EDIT_TODO } from '../constant'
 
 const setDone = (preState, data) => {
   const list = [...preState]
     for (let i = 0, length = list.length; i < length; i ++) {
       if (list[i].id === data.id) {
-        list[i].isDone = true
+        list[i].isCompleted = true
         break
       }
     }
@@ -22,23 +22,42 @@ const changeTodo = (preState, data) => {
     return list
 }
 
+const LOCAL_TODO_LIST = 'todoList'
 
+function syncListToLocal (data) {
+  const itemData = JSON.stringify(data)
+  localStorage.setItem(LOCAL_TODO_LIST, itemData)
+}
 
-const initTodos = []
+function getListFormLocal () {
+  const itemData = localStorage.getItem(LOCAL_TODO_LIST)
+  return itemData ? JSON.parse(itemData) : []
+}
+
+const initTodos = getListFormLocal()
 
 export default function todosReducer (preState = initTodos, action) {
   
   const { type, data } = action
 
+  let newData
   switch (type) {
     case ADD_TODO:
-      return [data, ...preState]
+      newData = [data, ...preState]
+      syncListToLocal(newData)
+      return newData
     case REMOVE_TODO:
-      return preState.filter(todo => todo.id !== data.id)
-    case DONE_TODO:
-      return setDone(preState, data)
+      newData = preState.filter(todo => todo.id !== data.id)
+      syncListToLocal(newData)
+      return newData
+    case SET_COMPLETED:
+      newData = setDone(preState, data)
+      syncListToLocal(newData)
+      return newData
     case EDIT_TODO:
-      return changeTodo(preState, data)
+      newData = changeTodo(preState, data)
+      syncListToLocal(newData)
+      return newData
     default:
       return preState
   }

@@ -1,0 +1,50 @@
+.todo-list-item {
+  flex-wrap: nowrap;
+  padding: 10px 0;
+
+  &+.todo-list-item {
+    border-top: 1px solid #efefef;
+  }
+
+  .todo-main {
+    flex-wrap: nowrap;
+
+    .todo-content {
+      line-height: 26px;
+    }
+
+    .todo-checkbox {
+      height: 26px;
+      display: flex;
+      align-items: center;
+      min-width: 30px;
+      .icon {
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        border: 1px solid #888;
+        cursor: pointer;
+        &:hover {
+          background-color: #eee;
+        }
+
+        &.icon-1 {
+          border-color: #d1453b;
+        }
+        &.icon-2 {
+          border-color: #eb8909;
+        }
+        &.icon-3 {
+          border-color: #246fe0;
+        }
+      }
+    }
+  }
+
+  .todo-menu {
+    cursor: pointer;
+    padding-left: 6px;
+    min-width: 20px;
+    font-weight: 600;
+  }
+}
